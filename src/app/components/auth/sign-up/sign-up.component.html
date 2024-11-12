@@ -19,14 +19,6 @@
       </div>
     </div>
     <div class="w-full flex flex-col">
-      <label class="font-medium" for="">UserName</label>
-      <input class="py-2 px-4" type="text" formControlName="userName">
-      @if ((f['userName'].touched || f['userName'].dirty) && f['userName'].errors?.['required']) {
-        <span class="text-red-500">This field is required.
-        </span>
-      } 
-    </div>
-    <div class="w-full flex flex-col">
       <label class="font-medium" for="">Email</label>
       <input class="py-2 px-4" type="text" formControlName="email">
       @if ((f['email'].touched || f['email'].dirty) && f['email'].errors?.['required']) {

@@ -1,1 +1,35 @@
-<p>sign-in works!</p>
+<div class="bg-gray-200 min-h-screen grid place-items-center px-4">
+  <form [formGroup]="signInForm" class="w-full grid grid-cols-1 gap-4" action="">
+    <div class="w-full flex flex-col">
+      <label class="font-medium" for="">Email</label>
+      <input class="py-2 px-4" type="text" formControlName="email">
+      @if ((f['email'].touched || f['email'].dirty) && f['email'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+      @if ((f['email'].touched || f['email'].dirty) && f['email'].errors?.['email']) {
+        <span class="text-red-500">Please enter a valid email address.</span>
+      }
+    </div>
+    <!-- <div class="w-full flex flex-col">
+      <label class="font-medium" for="">Mobile Number</label>
+      <input class="py-2 px-4" type="number" formControlName="mobileNumber">
+      <div *ngIf="mobileNumber?.invalid && (mobileNumber?.touched || mobileNumber?.dirty)">
+        <span *ngIf="mobileNumber?.errors?.['required']" class="text-red-500">Mobile number is required.</span>
+        <span *ngIf="mobileNumber?.errors?.['pattern']" class="text-red-500">Number must be exactly 11.</span>
+      </div>
+    </div> -->
+    <div class="w-full flex flex-col">
+      <label class="font-medium" for="">Password</label>
+      <input class="py-2 px-4" type="text" formControlName="password">
+      <div *ngIf="signInForm.get('password')?.invalid && (signInForm.get('password')?.touched || signInForm.get('password')?.dirty)">
+        <span *ngIf="signInForm.get('password')?.errors?.['required']" class="text-red-500">Password is required.</span>
+        <span *ngIf="signInForm.get('password')?.errors?.['minlength']" class="text-red-500">Password must be at least 8 characters long.</span>
+      </div>
+    </div>
+    <div class="w-full">
+      <button (click)="onSignIn()" class="w-full text-white py-2 rounded-full font-semibold bg-red-500 hover:bg-red-700">Sign Up</button>
+    </div>
+  </form>
+</div>
+

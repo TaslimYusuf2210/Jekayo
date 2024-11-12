@@ -5,26 +5,27 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl,
 } from '@angular/forms';
 import { signupModel } from './signupModel';
+import { GlobalService } from '../../../global.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, private globalService: GlobalService){
   }
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
       firstName:['', Validators.required],
-      userName:['', Validators.required],
+      // userName:['', Validators.required],
       lastName:['', Validators.required],
       mobileNumber:['', 
         [Validators.required,
@@ -33,6 +34,8 @@ export class SignUpComponent implements OnInit {
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(8)]]
     })
+
+    // this.clearStorage()
   }
 
   get f() {
@@ -46,19 +49,27 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.invalid) return
 
     const formData =  this.signUpForm.value as signupModel
-    let usersData = localStorage.getItem('storeUsers')
-    let newUsersData:any
+    let usersData = this.globalService.getData('storeUsers')
 
-    if(usersData){
-      newUsersData = usersData
+    // let newUsersData = usersData ? JSON.parse(usersData) : [];
+    let newUsersData = []
+
+    if (usersData) {
+      newUsersData = usersData;
+      console.log(newUsersData)
     } else {
-      newUsersData = []
+      newUsersData = [];
     }
 
     newUsersData.push(formData)
-    localStorage.setItem('storeUsers', newUsersData)
+    this.globalService.saveData('storeUsers', newUsersData)
     console.log(newUsersData)
     alert('registration successful')
+    this.signUpForm.reset()
+  }
+
+  clearStorage(){
+    localStorage.clear()
   }
   
 }
