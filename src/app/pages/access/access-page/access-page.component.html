@@ -1,17 +1,18 @@
-<div class="px-12 py-4">
+<div class="px-48 py-4">
   <div class=" w-full">
     <nav class="w-full flex justify-between list-none">
-       <li>Jekayo</li>
+       <li class="font-bold text-4xl">Jekayo</li>
        <li>
         <div class="border border-black rounded-full py-2 px-4">
             hey there Taslim
         </div>
        </li>
-       <li><button class="p-2 bg-blue-600 text-white rounded-2xl"> sign out</button></li>
+       <li><button (click)="signOut()" class="p-2 bg-blue-600 hover:bg-blue-900 text-white rounded-2xl font-medium"> sign out</button></li>
     </nav>
   </div>
   <div>
     <router-outlet></router-outlet>
     
+
   </div>
 </div>
