@@ -1,0 +1,52 @@
+<div>
+  <form [formGroup]="addMoreForm" class="flex flex-col gap-4" action="">
+    <div class="flex flex-col">
+      <label class="text-xl font-medium" for="">Menu type</label>
+      <select class=" border-[2px] p-4 rounded-md" formControlName="menuType">
+          <option value=""></option>
+          @for (item of menuType; track $index) {
+            <option [value]="item.value">{{item.name}}</option>
+          }
+      </select>
+      @if ((f['menuType'].touched || f['menuType'].dirty) && f['menuType'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+    </div>
+    <div class="flex flex-col">
+      <label class="text-xl font-medium" for="">Image Link</label>
+      <input class=" border-[2px] p-4 rounded-md" type="text" formControlName="imageLink">
+      @if ((f['imageLink'].touched || f['imageLink'].dirty) && f['imageLink'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+    </div>
+    <div class="flex flex-col">
+      <label class="text-xl font-medium" for="">Name</label>
+      <input class=" border-[2px] p-4 rounded-md" type="text" formControlName="name">
+      @if ((f['name'].touched || f['name'].dirty) && f['name'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+    </div>
+    <div class="flex flex-col">
+      <label class="text-xl font-medium" for="">Description</label>
+      <textarea class=" border-[2px] p-4 rounded-md" rows="10" formControlName="description"></textarea>
+      @if ((f['description'].touched || f['description'].dirty) && f['description'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+    </div>
+    <div class="flex flex-col">
+      <label class="text-xl font-medium" for="">price</label>
+      <input class=" border-[2px] p-4 rounded-md" type="number" formControlName="price">
+      @if ((f['price'].touched || f['price'].dirty) && f['price'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      } 
+    </div>
+    <div>
+      <button class="py-4 w-full bg-green-800 text-white font-semibold text-xl">Submit Menu</button>
+    </div>
+  </form>
+</div>
