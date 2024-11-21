@@ -1,0 +1,17 @@
+<div>
+  <div *ngIf="orders.length === 0" class="grid place-items-center">
+    <img [src]="image" alt="">
+    <p>You've not added any products yet. When you do, you'll see them here!</p>
+  </div>
+  <div *ngIf="orders.length > 0" class="w-full">
+    <div *ngFor="let item of orders" class="flex justify-between gap-4 w-full">
+      <span class="w-[5%] font-semibold">{{item.quantity}}x</span>
+      <p class="w-[70%] text-left font-medium">{{item.name}}</p>
+      <p class="w-[25%] text-right font-semibold text-lg">NGN{{item.price}}</p>
+    </div>
+    <div class="flex justify-between">
+        <button class="text-sm place-self-center bg-red-500">remove</button>
+        <button class="text-sm place-self-center bg-green-500">add</button>
+    </div>
+  </div>
+</div>

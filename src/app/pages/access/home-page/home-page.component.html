@@ -1,50 +1,63 @@
-<div class="mt-4">
-  <main class="w-full">
-    <div>
-      <button (click)="openModal()" class="px-4 py-2 bg-green-700 hover:bg-green-500">Add Menu</button>
-    </div>
-    <!-- meal section -->
-    <section class="w-full">
-      <header class="text-2xl">Meals</header>
-      <div class="grid grid-cols-2 gap-2 w-full ">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+<div class="mt-4 grid place-items-center ">
+  <div class="w-full flex justify-start gap-4">
+    <main class="w-full bg-gray-200 px-4 py-10 rounded-tr-[4rem]">
+      <div class="text-right">
+        <button (click)="openModal()" class="px-4 py-2 bg-green-700 hover:bg-green-500 text-white">Add Menu</button>
       </div>
-    </section>
-    <!-- accessory section -->
-     <section>
-      <header class="text-2xl">Accessories</header>
-      <div class="grid grid-cols-2 gap-2 w-full ">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-      </div>
-     </section>
-    <!-- Drinks section -->
-     <section>
-      <header class="text-2xl">Drinks</header>
-      <div class="grid grid-cols-2 gap-2 w-full ">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-      </div>
-     </section>
-    <!-- Snack section -->
-     <section>
-      <header class="text-2xl">Snack</header>
-      <div class="grid grid-cols-2 gap-2 w-full ">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-      </div>
-     </section>
-  </main>
-  <aside>
-
-  </aside>
+      <!-- meal section -->
+      <section class="w-full">
+        <header class="text-2xl">Meals</header>
+        <div class="grid grid-cols-2 gap-2 w-full ">
+          <!-- @for (item of menu; track $index) {} -->
+          <app-card
+          *ngFor="let item of meals"
+          [imageLink]="item.imageLink"
+          [name]="item.name"
+          [price]="item.price"
+          [description]="item.description"
+          (addOrder)="getOnAddOrder(item)"
+          >
+          </app-card>
+        </div>
+      </section>
+      <!-- accessory section -->
+       <section>
+        <header class="text-2xl">Accessories</header>
+        <div class="grid grid-cols-2 gap-2 w-full ">
+          <app-card
+          *ngFor="let item of accessories"
+          [imageLink]="item.imageLink"
+          [name]="item.name"
+          [price]="item.price"
+          [description]="item.description"
+          >
+          </app-card>
+        </div>
+       </section>
+      <!-- Drinks section -->
+       <section>
+        <header class="text-2xl">Drinks</header>
+        <div class="grid grid-cols-2 gap-2 w-full ">
+          <app-card></app-card>
+          <app-card></app-card>
+          <app-card></app-card>
+          <app-card></app-card>
+        </div>
+       </section>
+      <!-- Snack section -->
+       <section>
+        <header class="text-2xl">Snack</header>
+        <div class="grid grid-cols-2 gap-2 w-full ">
+          <app-card></app-card>
+          <app-card></app-card>
+          <app-card></app-card>
+          <app-card></app-card>
+        </div>
+       </section>
+    </main>
+    <aside class="text-center h-auto w-4/12 rounded-lg border-red-600 border-[2px] py-10 px-2 lg:hidden xl:block">
+      <header class="font-black text-3xl mb-8">Your Order</header>
+      <app-render-order></app-render-order>
+    </aside>
+  </div>
 </div>

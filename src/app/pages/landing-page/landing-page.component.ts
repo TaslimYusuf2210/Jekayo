@@ -22,7 +22,7 @@ export class LandingPageComponent {
   openModal(modal:any){
     this.dialog.open(modal,{
       width: '50vw',
-      minHeight: 'auto',
+      height: '60vh',
     })
   }
 

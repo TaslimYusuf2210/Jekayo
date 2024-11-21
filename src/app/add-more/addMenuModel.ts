@@ -3,5 +3,6 @@ export interface addMenuModel {
   imageLink: string,
   name: string,
   description: string,
-  price: number
+  price: number,
+  id: string,
 }

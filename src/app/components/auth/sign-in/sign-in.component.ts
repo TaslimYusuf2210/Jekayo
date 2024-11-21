@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
 
     if (this.authService.loginUser(email, password)) {
       alert('Login successful');
-      this.router.navigate(['/jekayo/homepage'])
+      this.router.navigate(['/jekayo/homwpage'])
     } else {
       alert('Incorrect Password or Email')
     }

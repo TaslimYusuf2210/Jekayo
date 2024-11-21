@@ -1,5 +1,5 @@
-<div>
-  <form [formGroup]="addMoreForm" class="flex flex-col gap-4" action="">
+<div class="px-4 py-8">
+  <form [formGroup]="addMenuForm" class="flex flex-col gap-4" action="">
     <div class="flex flex-col">
       <label class="text-xl font-medium" for="">Menu type</label>
       <select class=" border-[2px] p-4 rounded-md" formControlName="menuType">
@@ -46,7 +46,7 @@
       } 
     </div>
     <div>
-      <button class="py-4 w-full bg-green-800 text-white font-semibold text-xl">Submit Menu</button>
+      <button (click)="onSubmitMenu()" class="py-4 w-full bg-green-800 text-white font-semibold text-xl">Submit Menu</button>
     </div>
   </form>
 </div>
