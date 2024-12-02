@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { OrderService, Orders } from '../order.service';
 import { GlobalService } from '../global.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderingDetailsComponent } from '../ordering-details/ordering-details.component';
 
 @Component({
   selector: 'app-render-order',
@@ -13,13 +16,15 @@ import { GlobalService } from '../global.service';
 export class RenderOrderComponent implements OnInit{
 
   orders:Orders[] = []
+  totalAmount!: number;
+  totalItem!: number;
 
   @Input() price!:number
   @Input() name:string = ''
 
   image:string = "https://glovoapp.com/images/svg/astronaut-grey-scale.svg"
 
-  constructor(private orderService: OrderService, public globalService: GlobalService){
+  constructor(private orderService: OrderService, public globalService: GlobalService, private router: Router, private dialog: MatDialog){
   }
 
   ngOnInit(): void {
@@ -29,8 +34,10 @@ export class RenderOrderComponent implements OnInit{
       console.log(value)
       this.orders =  this.globalService.getData('orders')
     }
+    // this.totalItem = value
   })
-
+  this.calculateOrderAmount()
+  this.calculateTotalOrderItem()
   }
 
   addOrders(order:any){
@@ -41,7 +48,20 @@ export class RenderOrderComponent implements OnInit{
     this.orderService.removeOrder(item)
   }
 
-  clearCart() {
-    this.orderService.clearCart();
+  calculateOrderAmount() {
+    let total = this.orderService.calculateOrderAmount();
+    this.totalAmount = total
+  }
+
+  calculateTotalOrderItem(){
+    let totalItems = this.orderService.calculateTotalOrderItem()
+    this.totalItem = totalItems
+  }
+
+  openOrderModal(){
+    this.dialog.open(OrderingDetailsComponent, {
+      minHeight: "50vh",
+      width: "40vw"
+    })
   }
 }
