@@ -4,19 +4,27 @@
     <p>You've not added any products yet. When you do, you'll see them here!</p>
   </div>
   <div *ngIf="orders.length > 0" class="w-full">
-    <div *ngFor="let item of orders; let i = index" class="flex flex-col justify-between w-full">
+    <div *ngFor="let item of orders; let i = index" class="flex flex-col justify-between w-full mt-4">
       <div class="flex justify-between gap-4 w-full">
-          <span class="w-[5%] font-semibold">{{item.quantity}}x</span>
-          <p class="w-[70%] text-left font-medium">{{item.name}}</p>
-          <p class="w-[25%] text-right font-semibold text-lg">NGN{{item.price * item.quantity}}</p>
+          <span class="w-[5%] font-semibold text-sm lg:text-base">{{item.quantity}}x</span>
+          <p class="w-[70%] text-left font-medium text-sm lg:text-base">{{item.name}}</p>
+          <p class="w-[25%] text-right font-semibold text-sm lg:text-lg">₦{{item.price * item.quantity}}</p>
       </div>
       <div class="flex justify-between w-full">
-          <button (click)="removeOrder(i)" class="text-sm place-self-center bg-red-500">remove</button>
-          <button (click)="addOrders(i)" class="text-sm place-self-center bg-green-500">add</button>
+        <span class="grid place-items-center gap-4">
+          <button mat-icon-button (click)="removeOrder(i)" class="bg-red-500 text-white w-auto h-auto rounded-full flex justify-center items-center">
+            <mat-icon class="text-white text-base">remove</mat-icon>
+          </button>
+        </span>
+        <span class="grid place-items-center gap-4">
+          <button mat-icon-button (click)="addOrders(i)" class="bg-green-500 text-white w-auto h-auto rounded-full flex justify-center items-center">
+            <mat-icon class="text-white text-base">add</mat-icon>
+          </button>
+        </span>
       </div>
     </div>
     <div class="mt-40">
-      <button (click)="openOrderModal()" class="w-full bg-black text-white px-4 py-2 rounded-3xl">Order {{totalItem}} for NGN {{totalAmount}}</button>
+      <button (click)="openOrderModal()" class="w-full bg-black text-white px-4 py-2 rounded-3xl text-xs lg:text-lg">Order {{totalItem}} for NGN {{totalAmount}}</button>
     </div>
   </div>
 </div>

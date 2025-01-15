@@ -5,11 +5,12 @@ import { GlobalService } from '../global.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderingDetailsComponent } from '../ordering-details/ordering-details.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-render-order',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './render-order.component.html',
   styleUrl: './render-order.component.scss'
 })
@@ -31,13 +32,15 @@ export class RenderOrderComponent implements OnInit{
   this.orders =  this.globalService.getData('orders')
   this.orderService.cart$.subscribe((value) => {
     if (value) {
-      console.log(value)
       this.orders =  this.globalService.getData('orders')
+      this.calculateTotalOrderItem()
+      this.calculateOrderAmount()
     }
     // this.totalItem = value
   })
   this.calculateOrderAmount()
   this.calculateTotalOrderItem()
+
   }
 
   addOrders(order:any){

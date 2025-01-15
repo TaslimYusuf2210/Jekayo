@@ -1,13 +1,13 @@
 <div class="mt-4 grid place-items-center ">
   <div class="w-full flex justify-start gap-4">
-    <main class="w-full bg-gray-200 px-4 py-10 rounded-tr-[4rem]">
+    <main class="w-full bg-gray-200 px-4 lg:py-10 py-6 lg:rounded-tr-[4rem]">
       <div class="text-right">
-        <button (click)="openModal()" class="px-4 py-2 bg-green-700 hover:bg-green-500 text-white">Add Menu</button>
+        <button (click)="openModal()" class="text-sm lg:text-base px-4 py-2 bg-green-700 hover:bg-green-500 text-white">Add Menu</button>
       </div>
       <!-- meal section -->
       <section class="w-full">
-        <header class="text-2xl">Meals</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
+        <header class="lg:text-2xl text-base">Meals</header>
+        <div class="grid grid-cols-1 gap-2 w-full xl:grid-cols-2">
           <!-- @for (item of menu; track $index) {} -->
           <app-card
           *ngFor="let item of meals"
@@ -18,12 +18,13 @@
           (addOrder)="onAddOrder(item)"
           >
           </app-card>
+
         </div>
       </section>
       <!-- accessory section -->
        <section>
-        <header class="text-2xl">Accessories</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
+        <header class="lg:text-2xl">Accessories</header>
+        <div class="grid grid-cols-1 gap-2 w-full xl:grid-cols-2">
           <app-card
           *ngFor="let item of accessories"
           [imageLink]="item.imageLink"
@@ -33,31 +34,55 @@
           (addOrder)="onAddOrder(item)"     
           >
           </app-card>
+          @if (accessories.length < 1) {
+            <div class="text-red-400 text-lg text-center">Sorry, menu not available</div>
+          }
         </div>
        </section>
       <!-- Drinks section -->
        <section>
-        <header class="text-2xl">Drinks</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
+        <header class="lg:text-2xl">Drinks</header>
+        <div class="grid grid-cols-1 gap-2 w-full xl:grid-cols-2">
+          <app-card
+          *ngFor="let item of drinks"
+          [imageLink]="item.imageLink"
+          [name]="item.name"
+          [price]="item.price"
+          [description]="item.description"
+          (addOrder)="onAddOrder(item)"     
+          >
+          </app-card>
+          @if (drinks.length < 1) {
+            <div class="text-red-400 text-lg text-center w-full">Sorry, menu not available</div>
+          }
         </div>
        </section>
       <!-- Snack section -->
        <section>
-        <header class="text-2xl">Snack</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
+        <header class="lg:text-2xl">Snack</header>
+        <div class="grid grid-cols-1 gap-2 w-full xl:grid-cols-2">
+          <app-card
+          *ngFor="let item of snacks"
+          [imageLink]="item.imageLink"
+          [name]="item.name"
+          [price]="item.price"
+          [description]="item.description"
+          (addOrder)="onAddOrder(item)"     
+          >
+          </app-card>
+          <div class="flex justify-center items-center text-center w-full">
+            @if (snacks.length < 1) {
+              <div class="text-red-400 text-lg w-full">Sorry, menu not available</div>
+            }
+          </div>
         </div>
        </section>
+       <div>
+        <app-render-order-button></app-render-order-button>
+       </div>
     </main>
-    <aside class="text-center h-auto w-4/12 rounded-lg border-red-600 border-[2px] py-10 px-2 lg:hidden xl:block">
-      <header class="font-black text-3xl mb-8">Your Order</header>
+    <aside class="text-center h-auto w-4/12 rounded-lg border-red-600 border-[2px] py-10 px-2 md:block hidden">
+      <header class="font-black lg:text-3xl mb-8 text-2xl">Your Order</header>
       <app-render-order></app-render-order>
     </aside>
   </div>

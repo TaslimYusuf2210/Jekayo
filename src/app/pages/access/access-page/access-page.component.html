@@ -1,14 +1,39 @@
-<div class="px-[10%] py-4">
+<div class="lg:px-[10%] py-4 px-[5%]">
   <div class=" w-full">
     <nav class="w-full flex justify-between list-none">
-       <li class="font-bold text-4xl">Jekayo</li>
+       <li class="lg:text-4xl text-2xl font-bold">Jekayo</li>
        <li>
-        <div class="border border-black rounded-full py-2 px-4">
+        <div class="border border-black rounded-full py-2 px-4 lg:block hidden">
             Hey there {{usersName}}
         </div>
        </li>
-       <li><button (click)="signOut()" class="p-2 bg-blue-600 hover:bg-blue-900 text-white rounded-2xl font-medium"> sign out</button></li>
+       <li><button (click)="signOut()" class="p-2 bg-blue-600 hover:bg-blue-900 text-white rounded-2xl font-medium lg:block hidden"> sign out</button></li>
+       <button class="lg:hidden" (click)="toggleMenu()">
+        @if (isMenuOpen) {
+          <i class="material-icons">close</i>
+        } @else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+          </svg>
+        }
+       </button>
     </nav>
+    @if (isMenuOpen) {
+      <div class="list-none text-right">
+        <li><button class="bg-gray-800 hover:bg-gray-950 px-2 py-1 rounded-lg text-white text-sm" (click)="signOut()">Sign Out</button></li>
+      </div>
+     }
   </div>
   <div>
     <router-outlet></router-outlet>

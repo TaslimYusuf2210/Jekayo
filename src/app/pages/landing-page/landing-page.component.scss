@@ -1,0 +1,168 @@
+// * {
+//   padding-block-end: 0;margin: 0;
+//   box-sizing: border-box;
+// }
+// body {
+//   font-family: sans-serif;
+// }
+.hero-section {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5e9f737e1f6fc53eb99e6bb9/ad15094c-cbc5-496a-b756-54ac7e15b92f/Burger+Blog.jpg);
+  background-size: cover;
+  height: 100vh;
+  text-transform: capitalize;
+}
+// button {
+//   padding: 10px 20px;
+//   margin: 0 5px;
+//   border-radius: 15px;
+//   border: none;
+//   background-color: black;
+//   color: white;
+//   &:hover {
+//       background-color: rgb(138, 88, 79);
+//       transition: 0.5s linear;
+//       cursor: pointer;
+//   }
+// }
+// .hero-section .navbar {
+//   padding: 2%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: #0000006d;
+//   backdrop-filter: blur(5px);
+//   color: #fff;
+// }
+// .hero-section .navbar nav ul {
+//   display: flex;
+//   list-style-type: none;
+//   gap: 50px;
+// }
+// .hero-section .navbar nav ul li {
+//   font-size: 16px;
+//   padding: 5px;
+//   &:hover {
+//       border-bottom: 1px solid black;
+//       transition: .5s linear;
+//       cursor: pointer;
+//   }
+// }
+// .hero-section .text {
+//   background-color: #0000006d;
+//   backdrop-filter: blur(5px);
+//   border-radius: 15px;
+//   color: #fff;
+//   text-align: center;
+//   margin: auto;
+//   margin-top: 50px;
+//   padding: 2%;
+//   width: 55%;
+// }
+// .hero-section .text h1 {
+//   font-size: 70px;
+//   margin: 20px 0;
+// }
+// .hero-section .text p {
+//   color: rgb(201, 201, 0);
+// }
+
+
+.first-section {
+  padding: 5% 7%;
+  text-align: center;
+  text-transform: capitalize;
+  width: 100%;
+}
+.sub-sec {
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.first-section .sub-sec .container {
+  width: 32%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-image: linear-gradient(rgb(255, 220, 22) 10%, rgb(200, 148, 18));
+  box-shadow: 0 0 5px rgb(174, 174, 174);
+  padding: 15px;
+  border-radius: 15px;
+}
+.first-section .text h1 {
+  font-size: 60px;
+}
+.first-section .sub-sec .container img {
+  border-radius: 100%;
+  height: 50%;
+  width: 65%;
+}
+.first-section .sub-sec .container header {
+  font-size: 35px;
+  font-weight: bold;
+}
+.first-section .sub-sec .container .txt {
+  /* text-align: left; */
+  font-size: 16px;
+}
+.second-section {
+  text-transform: capitalize;
+  padding: 5% 10%;
+  text-align: center;
+}
+.second-section .sub-sec {
+  flex-direction: column;
+}
+.second-section .sub-sec .container {
+  width: 75%;
+  display: flex;
+  gap: 30px;
+  margin: 60px 0;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.second-section .sub-sec .container:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+.second-section .sub-sec .container img{
+  width: 45%;
+  border-radius: 15px;
+}
+.second-section .sub-sec .container .txt {
+  width: 40%;
+}
+.second-section .sub-sec .container .txt header {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.third-section {
+  padding: 5%;
+  text-transform: capitalize;
+}
+.third-section h1 {
+  font-size: 50px;
+}
+.third-section .sub-sec .container {
+  width: 30%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: rgb(190, 189, 189);
+}
+.third-section .sub-sec .container div {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.third-section .sub-sec .container div h5 {
+  font-size: 18px;
+}
+.third-section .sub-sec .container div img {
+  width: 10%;
+  border-radius: 100%;
+}
