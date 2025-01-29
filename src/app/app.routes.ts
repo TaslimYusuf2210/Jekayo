@@ -11,6 +11,6 @@ export const routes: Routes = [
   },
   { path:'', component: LandingPageComponent },
   { path:'home', component: LandingPageComponent },
-  { path:'signin', component: SignInComponent },
+  { path:'homepage', component: SignInComponent },
   { path:'signup', component: SignUpComponent },
 ];
