@@ -18,6 +18,7 @@ export class AuthService {
 
     if (user) {
       localStorage.setItem('loggedInUser', JSON.stringify(user));
+      this.router.navigate(['jekayo/homepage'])
       return true; // Login successful
     }
 

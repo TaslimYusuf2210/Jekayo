@@ -47,25 +47,15 @@ export class HomePageComponent implements OnInit {
   }
 
   userOrder:any = []
-  getOnAddOrder(value:any){
-    let clickedOrder:orderModel = {
-      name: value.description,
-      price: value.price,
-      quantity: 1
-    }
-    this.userOrder.push(clickedOrder)
-    this.globalService.saveData('orders', this.userOrder)
-    console.log(this.userOrder)
+  onAddOrder(item:any){
+    console.log('adding order')
+    this.orderService.addOrder(item)
   }
-
-  handleAddOrder(order:any){
-    this.orderService.addOrder(order)
-  }
-
   
 }
 
 interface orderModel  {
+  id:string,
   name:string,
   price:number,
   quantity:number

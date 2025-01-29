@@ -1,0 +1,27 @@
+<div class="px-8 py-4">
+  <form [formGroup]="confirmOrderForm" class="flex flex-col gap-4" action="">
+    <header>
+      <h2 class="">Welcome</h2>
+      <h5>Please enter your details</h5>
+    </header>
+    <div class="w-full flex flex-col">
+      <label class="font-medium">Delivery Address</label>
+      <input formControlName="deliveryAddress" class="py-2 px-4 border" type="text">
+      @if((f['deliveryAddress'].touched || f['deliveryAddress'].dirty) && f['deliveryAddress'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      }
+    </div>
+    <div class="w-full flex flex-col">
+      <label class="font-medium">Number</label>
+      <input formControlName="phoneNumber" class="py-2 px-4 border" type="text">
+      @if((f['phoneNumber'].touched || f['phoneNumber'].dirty) && f['phoneNumber'].errors?.['required']) {
+        <span class="text-red-500">This field is required.
+        </span>
+      }
+    </div>
+    <div class="w-full">
+      <button class="w-full font-semibold bg-blue-600 hover:bg-blue-300  py-2 rounded-full text-white">Confirm Order</button>
+    </div>
+  </form>
+</div>
