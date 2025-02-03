@@ -17,6 +17,10 @@ import { OrderService } from '../../../order.service';
 export class HomePageComponent implements OnInit {
   meals:any[] = []
   accessories:any[] = []
+  drinks:any[] = []
+  snacks:any[] = []
+
+  
   constructor(private dialog:MatDialog, private globalService:GlobalService, private orderService: OrderService){}
 
   openModal(){
@@ -44,6 +48,12 @@ export class HomePageComponent implements OnInit {
 
   getAccessoriesItems(){
     this.accessories = this.getMenu().filter((item:any) => item.menuType === 'accessory')
+  }
+  getDrinkItems(){
+    this.drinks = this.getMenu().filter((item:any) => item.menuType === 'drinks')
+  }
+  getSnackItems(){
+    this.snacks = this.getMenu().filter((item:any) => item.menuType === 'accessory')
   }
 
   userOrder:any = []

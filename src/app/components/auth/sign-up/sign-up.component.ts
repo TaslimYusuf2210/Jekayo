@@ -9,6 +9,8 @@ import {
 import { signupModel } from './signupModel';
 import { GlobalService } from '../../../global.service';
 import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +21,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
-  constructor(private fb: FormBuilder, private globalService: GlobalService){
+  constructor(private fb: FormBuilder, private globalService: GlobalService, private dialog: MatDialog){
   }
 
   ngOnInit(): void {
@@ -65,6 +67,11 @@ export class SignUpComponent implements OnInit {
     this.globalService.saveData('storeUsers', newUsersData)
     console.log(newUsersData)
     alert('registration successful')
+    this.dialog.closeAll()
+    this.dialog.open(SignInComponent, {
+      width: '50vw',
+      height: '60vh',
+    })
     this.signUpForm.reset()
   }
 

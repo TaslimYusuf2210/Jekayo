@@ -6,18 +6,20 @@ import { ReactiveFormsModule, FormBuilder,
 import { GlobalService } from '../../../global.service';
 import { AuthService } from '../../../auth.service';
 import { Router } from '@angular/router';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog'
+
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private globalService: GlobalService, private authService: AuthService, private router: Router){}
+  constructor(private fb: FormBuilder, private globalService: GlobalService, private authService: AuthService, private router: Router, private dialogRef: MatDialog){}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -38,6 +40,7 @@ export class SignInComponent implements OnInit {
 
     if (this.authService.loginUser(email, password)) {
       alert('Login successful');
+      this.dialogRef.closeAll()
       this.router.navigate(['/jekayo/homepage'])
     } else {
       alert('Incorrect Password or Email')
