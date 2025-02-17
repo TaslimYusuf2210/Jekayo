@@ -36,6 +36,15 @@ export class HomePageComponent implements OnInit {
     this.getAccessoriesItems()
   }
 
+  isMenuPresent(item:any){
+    if (item < 0) {
+      return {
+        'display': 'grid',
+        'grid-template-column': 'repeat(1, minmax(0, 1fr))'
+      }
+    } else return
+  }
+
 
   getMenu(){
     let menuItems = this.globalService.getData('menuList')

@@ -7,23 +7,27 @@
       <!-- meal section -->
       <section class="w-full">
         <header class="text-2xl">Meals</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
-          <!-- @for (item of menu; track $index) {} -->
-          <app-card
-          *ngFor="let item of meals"
-          [imageLink]="item.imageLink"
-          [name]="item.name"
-          [price]="item.price"
-          [description]="item.description"
-          (addOrder)="onAddOrder(item)"
-          >
-          </app-card>
+        <div class="grid grid-cols-2 gap-2 w-full" [ngClass]="{'grid-cols-2': meals.length > 0, 'grid-cols-1': meals.length < 1}" >
+          @if (meals.length > 0) {
+            <app-card
+            *ngFor="let item of meals"
+            [imageLink]="item.imageLink"
+            [name]="item.name"
+            [price]="item.price"
+            [description]="item.description"
+            (addOrder)="onAddOrder(item)"
+            >
+            </app-card>
+          }
+          @if (meals.length < 1) {
+            <p class="text-red-400 font-semibold">Sorry, there is no order available for this list</p>
+          }
         </div>
       </section>
       <!-- accessory section -->
        <section>
         <header class="text-2xl">Accessories</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
+        <div class="grid grid-cols-2 gap-2 w-full " [ngClass]="{'grid-cols-2': accessories.length > 0, 'grid-cols-1': accessories.length < 1, 'place-items-center': accessories.length < 1}">
           <app-card
           *ngFor="let item of accessories"
           [imageLink]="item.imageLink"
@@ -38,21 +42,40 @@
       <!-- Drinks section -->
        <section>
         <header class="text-2xl">Drinks</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
+        <div class="grid grid-cols-2 gap-2 w-full " [ngClass]="{'grid-cols-2': drinks.length > 0, 'grid-cols-1': drinks.length < 1, 'place-items-center': drinks.length < 1}">
+          @if (drinks.length > 0) {}
+          <app-card
+          *ngFor="let item of drinks"
+          [imageLink]="item.imageLink"
+          [name]="item.name"
+          [price]="item.price"
+          [description]="item.description"
+          (addOrder)="onAddOrder(item)"     
+          >
+          </app-card>
+          @if (drinks.length < 1) {
+            <p class="text-red-400 font-semibold">Sorry, there is no order available for this list</p>
+          }
         </div>
        </section>
       <!-- Snack section -->
        <section>
         <header class="text-2xl">Snack</header>
-        <div class="grid grid-cols-2 gap-2 w-full ">
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
-          <app-card></app-card>
+        <div class="grid gap-2 w-full" [ngClass]="{'grid-cols-2': snacks.length > 0, 'grid-cols-1': snacks.length < 1, 'place-items-center': snacks.length < 1}">
+          @if (snacks.length > 0) {
+            <app-card
+            *ngFor="let item of snacks"
+            [imageLink]="item.imageLink"
+            [name]="item.name"
+            [price]="item.price"
+            [description]="item.description"
+            (addOrder)="onAddOrder(item)"     
+            >
+            </app-card>
+          }
+          @if (snacks.length < 1) {
+            <p class="text-red-400 font-semibold">Sorry, there is no order available for this list</p>
+          }
         </div>
        </section>
     </main>
