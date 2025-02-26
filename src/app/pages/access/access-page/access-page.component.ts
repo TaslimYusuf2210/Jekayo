@@ -21,6 +21,7 @@ export interface usersDetails {
 export class AccessPageComponent implements OnInit {
 
   usersName:string = '';
+  isMenuOpen:boolean = false;
 
   constructor(private auth:AuthService, private globalService: GlobalService){}
 
@@ -36,4 +37,9 @@ export class AccessPageComponent implements OnInit {
     let user:usersDetails = this.globalService.getData('loggedInUser');
     this.usersName = user.firstName
   }
+
+  toggleMenu(){
+    this.isMenuOpen = !this.isMenuOpen
+  }
+
 }

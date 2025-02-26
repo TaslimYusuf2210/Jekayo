@@ -89,7 +89,7 @@ export class OrderService implements OnChanges {
   calculateTotalOrderItem(){
     let cartOrders = this.globalService.getData('orders');
     let totalItems  = cartOrders.reduce((total:number, item:Orders) => total + item.quantity,0)
-    this.cart.next(totalItems)
+    // this.cart.next(totalItems)
     return totalItems
   }
 

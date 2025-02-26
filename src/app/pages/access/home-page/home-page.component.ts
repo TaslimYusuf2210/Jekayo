@@ -6,11 +6,13 @@ import { GlobalService } from '../../../global.service';
 import { CommonModule } from '@angular/common';
 import { RenderOrderComponent } from '../../../render-order/render-order.component';
 import { OrderService } from '../../../order.service';
+import { RenderOrderButtonComponent } from '../../../render-order-button/render-order-button.component';
+
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CardComponent, MatDialogModule, CommonModule, RenderOrderComponent],
+  imports: [CardComponent, MatDialogModule, CommonModule, RenderOrderComponent, RenderOrderButtonComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -20,7 +22,6 @@ export class HomePageComponent implements OnInit {
   drinks:any[] = []
   snacks:any[] = []
 
-  
   constructor(private dialog:MatDialog, private globalService:GlobalService, private orderService: OrderService){}
 
   openModal(){
@@ -34,6 +35,9 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.getMealItems() 
     this.getAccessoriesItems()
+    this.getDrinkItems()
+    this.getSnacksItems()
+    this.getMenu()
   }
 
   isMenuPresent(item:any){
@@ -48,6 +52,7 @@ export class HomePageComponent implements OnInit {
 
   getMenu(){
     let menuItems = this.globalService.getData('menuList')
+    console.log(menuItems)
     return menuItems
   }
 
@@ -58,11 +63,13 @@ export class HomePageComponent implements OnInit {
   getAccessoriesItems(){
     this.accessories = this.getMenu().filter((item:any) => item.menuType === 'accessory')
   }
+
   getDrinkItems(){
     this.drinks = this.getMenu().filter((item:any) => item.menuType === 'drinks')
   }
-  getSnackItems(){
-    this.snacks = this.getMenu().filter((item:any) => item.menuType === 'accessory')
+
+  getSnacksItems(){
+    this.snacks = this.getMenu().filter((item:any) => item.menuType === 'snacks')
   }
 
   userOrder:any = []
@@ -72,10 +79,12 @@ export class HomePageComponent implements OnInit {
   }
   
 }
-
-interface orderModel  {
+export interface orderModel {
   id:string,
   name:string,
   price:number,
-  quantity:number
+  quantity:number,
+  menutype:string,
+  description:string,
+  imageLink:string,
 }
