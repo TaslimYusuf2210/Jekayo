@@ -37,9 +37,9 @@ export class RenderOrderComponent implements OnInit{
       this.calculateOrderAmount()
     }
     // this.totalItem = value
+    this.calculateOrderAmount()
+    this.calculateTotalOrderItem()
   })
-  this.calculateOrderAmount()
-  this.calculateTotalOrderItem()
 
   }
 
